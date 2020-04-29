@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="grab_cut.cpp" />
+    <ClCompile Include="opencv-plus.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="grab_cut.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
