@@ -10,7 +10,7 @@ int grab_cut::exec_grc()
 	// Initializing image
 	if (image.empty())
 	{
-		std::cout << "Failed to open image";
+		std::cerr << "Failed to open image" << std::endl;
 		return -1;
 	}
 	else
