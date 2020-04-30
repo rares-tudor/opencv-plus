@@ -21,21 +21,9 @@
     <ClCompile Include="grab_cut.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bs_knn.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="bs_mog2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grab_cut.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="bs_knn.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="bs_mog2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
