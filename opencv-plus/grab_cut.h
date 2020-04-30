@@ -12,8 +12,6 @@ class grab_cut
 		~grab_cut();
 		int exec_grc();
 
-	protected: 
-
 	private:
 		std::string path;
 };

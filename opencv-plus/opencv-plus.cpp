@@ -4,6 +4,7 @@
 #include "opencv2/imgcodecs.hpp"
 #include <iostream>
 #include "grab_cut.h"
+
 std::string path;
 
 int main(int argc, char** argv)
@@ -15,7 +16,7 @@ int main(int argc, char** argv)
 		{	
 			// Determining the path and running the algorithm
 			path = std::string(argv[i + 1]);
-			std::cout << path;
+
 			grab_cut grbc(path);
 			grbc.exec_grc();
 		}
