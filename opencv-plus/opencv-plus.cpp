@@ -12,13 +12,16 @@ int main(int argc, char** argv)
 	for (int i = 0; i < argc; ++i)
 	{
 		// grabCut-Algorithm
-		if (std::string(argv[i]) == "g")
+		if (std::string(argv[i]) == "-gc")
 		{	
 			// Determining the path and running the algorithm
-			path = std::string(argv[i + 1]);
+			if (std::string(argv[i + 1]) == "-p")
+			{
+				path = std::string(argv[i + 2]);
 
-			grab_cut grbc(path);
-			grbc.exec_grc();
+				grab_cut grbc(path);
+				grbc.exec_grc();
+			}
 		}
 		// Other options
 	}
