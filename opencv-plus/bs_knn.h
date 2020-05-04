@@ -13,12 +13,18 @@
 #pragma once
 class bs_knn
 {
-public:
-	bs_knn(std::string fpath);
-	~bs_knn();
-	int exec_bs_knn();
+private:
+	std::string rpath, wpath;
+
 private:
 	cv::Ptr<cv::BackgroundSubtractor> p_bs = cv::createBackgroundSubtractorKNN();
-	std::string path;
+
+public:
+	int exec_bs_knn();
+
+public:
+	bs_knn(const std::string& rpath,  const std::string& wpath);
+	~bs_knn();
+
 };
 

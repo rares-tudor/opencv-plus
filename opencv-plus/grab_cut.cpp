@@ -1,11 +1,18 @@
 #include "grab_cut.h"
+#include "ppm.h"
+#include <iostream>
+#include <fstream>
 
-grab_cut::grab_cut(std::string fpath) : path(fpath) {}
+
+grab_cut::grab_cut(const std::string& rpath, const std::string& wpath)
+{
+	this->rpath = rpath;
+}
 
 int grab_cut::exec_grc()
 {
 
-	cv::Mat image = cv::imread(cv::samples::findFile(path), cv::IMREAD_COLOR);
+	cv::Mat image = cv::imread(cv::samples::findFile(rpath), cv::IMREAD_COLOR);
 
 	// Initializing image
 	if (image.empty())
@@ -46,6 +53,11 @@ int grab_cut::exec_grc()
 		cv::Mat3b fgdImg = cv::Mat3b::zeros(image.rows, image.cols);
 		// copy all valid foreground-pixels to a temporary image
 		image.copyTo(fgdImg, fgdMask);
+		std::ifstream inFile;
+		std::ofstream outFile;
+		
+		outFile.open(wpath, std::ios::binary);
+		outFile << fgdImg;
 
 		cv::imshow("GrabCut Image", fgdImg);
 		cv::waitKey(0);

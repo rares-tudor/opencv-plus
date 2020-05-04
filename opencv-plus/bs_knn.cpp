@@ -1,12 +1,13 @@
 #include "bs_knn.h"
 
-bs_knn::bs_knn(std::string fpath) : path(fpath)
+bs_knn::bs_knn(const std::string& rpath, const std::string& wpath)
 {
+	this->rpath = rpath;
 }
 
 int bs_knn::exec_bs_knn()
 {
-	cv::VideoCapture cap(cv::samples::findFile(path));
+	cv::VideoCapture cap(cv::samples::findFile(rpath));
 	if (!cap.isOpened())
 	{
 		std::cerr << "Unable to open." << std::endl;

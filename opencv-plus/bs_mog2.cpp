@@ -1,13 +1,13 @@
 #include "bs_mog2.h"
 
-bs_mog2::bs_mog2(std::string fpath) : path(fpath)
+bs_mog2::bs_mog2(const std::string& rpath, const std::string& wpath)
 {
-	
+	this->rpath = rpath;
 }
 
 int bs_mog2::exec_bs_mog2()
 {
-	cv::VideoCapture cap(cv::samples::findFile(path));
+	cv::VideoCapture cap(cv::samples::findFile(rpath));
 	if (!cap.isOpened())
 	{
 		std::cerr << "Unable to open." << std::endl;

@@ -13,13 +13,18 @@
 #pragma once
 class bs_mog2
 {
-public:
-	bs_mog2(std::string fpath);
-	~bs_mog2();
-	int exec_bs_mog2();
-
 private:
 	cv::Ptr<cv::BackgroundSubtractor> p_bs = cv::createBackgroundSubtractorMOG2();
-	std::string path;
+
+private:
+	std::string rpath, wpath;
+
+public:
+	int exec_bs_mog2();
+
+public:
+	bs_mog2(const std::string& rpath, const std::string& wpath);
+	~bs_mog2();
+
 };
 

@@ -8,11 +8,11 @@
 class grab_cut
 {
 	public:
-		grab_cut(std::string fPath);
+		grab_cut(const std::string& rpath, const std::string& wpath);
 		~grab_cut();
 		int exec_grc();
 
 	private:
-		std::string path;
+		std::string rpath, wpath;
 };
 
