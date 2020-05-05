@@ -12,7 +12,7 @@ canny_bgd_separator::canny_bgd_separator(const std::string& rpath, const std::st
 
 void canny_bgd_separator::subtract_bgd() 
 {
-	canny_edge_detection edgeDetector(rpath);
+	canny_edge_detection edgeDetector(rpath, wpath);
 
 	cv::Mat original = cv::imread(rpath, cv::IMREAD_COLOR); // read the original image
 
@@ -50,3 +50,5 @@ void canny_bgd_separator::subtract_bgd()
 	cv::imshow("Detected Edges", result); // display the result
 	cv::waitKey(0);
 }
+
+canny_bgd_separator::~canny_bgd_separator() {}

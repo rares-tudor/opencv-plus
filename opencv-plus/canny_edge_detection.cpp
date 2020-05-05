@@ -5,6 +5,7 @@
 canny_edge_detection::canny_edge_detection(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 void canny_edge_detection::get_edges()

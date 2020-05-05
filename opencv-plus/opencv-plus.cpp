@@ -24,7 +24,7 @@ std::string rpath, wpath; //readpath, writepath
 void parsecmd(char** argv)
 { 
 	// Determining the path
-	if (std::string(argv[1]) == "-p")
+	if (std::string(argv[1]) == "-rp")
 	{
 		rpath = std::string(argv[2]);
 		wpath = std::string(argv[4]);

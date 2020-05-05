@@ -21,26 +21,26 @@ std::istream& operator<<(std::istream& inputStream, ppm ppmObj)
 
 std::ostream& operator>>(std::ostream& outputStream, const ppm& ppmObj)
 {
-	outputStream << "P6"	<< "\n"
-		<< ppmObj.w			<< " "
-		<< ppmObj.h			<< "\n"
+	outputStream << "P6" << "\n"
+		<< ppmObj.w << " "
+		<< ppmObj.h << "\n"
 		<< ppmObj.maxColVal << "\n";
 	size_t size = ppmObj.w * ppmObj.h * 3;
 	outputStream.write(ppmObj.m_Ptr, size);
 	return outputStream;
-};
+}
 
-std::ostream& operator>>(std::ostream& outputStream, const cv::Mat3b matImg)
+std::ostream& operator >>(std::ostream& outputStream, const cv::Mat3b matImg)
 {
 	outputStream << "P6" << "\n"
 		<< matImg.cols << " "
 		<< matImg.rows << "\n"
-		<< 255		   << "\n";
+		<< 255 << "\n";
 	size_t size = matImg.cols * matImg.rows * 3;
-	char* ptr;
+	char* ptr{};
 	outputStream.write(ptr, size);
 	return outputStream;
-};
+}
 
 
 

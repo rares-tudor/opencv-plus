@@ -8,9 +8,10 @@ private:
 	std::string rpath, wpath;
 
 public:
-	canny_bgd_separator(const std::string& rpath, const std::string& wpath);
 
 public:
+	canny_bgd_separator(const std::string& rpath, const std::string& wpath);
+	~canny_bgd_separator();
 	void subtract_bgd();
 };
 

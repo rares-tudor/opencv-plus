@@ -8,9 +8,9 @@ private:
 	std::string rpath, wpath;
 
 public:
-	sobel_bgd_subtraction(const std::string& rpath, const std::string& wpath);
 
 public:
+	sobel_bgd_subtraction(const std::string& rpath, const std::string& wpath);
 	void subtract_bgd();
 };
 

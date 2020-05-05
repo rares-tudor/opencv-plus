@@ -20,9 +20,9 @@ private:
 	std::string rpath, wpath;
 
 public:
-	int exec_bs_mog2();
 
 public:
+	int exec_bs_mog2();
 	bs_mog2(const std::string& rpath, const std::string& wpath);
 	~bs_mog2();
 

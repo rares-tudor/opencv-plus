@@ -7,6 +7,7 @@
 sobel_edge_detection::sobel_edge_detection(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 void sobel_edge_detection::get_edges(cv::Mat& edges)
@@ -35,8 +36,8 @@ void sobel_edge_detection::get_edges_and_display()
 	cv::Mat edges;
 	get_edges(edges);
 
-	grab_cut grabCut(rpath);
-	grabCut.exec_grc(edges);
+	grab_cut grabCut(rpath, wpath);
+	grabCut.exec_grc();
 
 	cv::imshow("Sobel Edge Detection", edges);
 	cv::waitKey(0);

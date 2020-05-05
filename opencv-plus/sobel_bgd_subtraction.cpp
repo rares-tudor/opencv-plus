@@ -8,6 +8,7 @@
 sobel_bgd_subtraction::sobel_bgd_subtraction(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 void sobel_bgd_subtraction::subtract_bgd()

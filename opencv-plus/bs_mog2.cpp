@@ -3,6 +3,7 @@
 bs_mog2::bs_mog2(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 int bs_mog2::exec_bs_mog2()
@@ -32,5 +33,4 @@ int bs_mog2::exec_bs_mog2()
 	}
 }
 
-bs_mog2::~bs_mog2() 
-{ }
+bs_mog2::~bs_mog2() { }

@@ -8,9 +8,9 @@ private:
 	std::string rpath, wpath;
 
 public:
-	sobel_edge_detection(const std::string& rpath, const std::string& wpath);
 
 public:
+	sobel_edge_detection(const std::string& rpath, const std::string& wpath);
 	void get_edges_and_display();
 	void get_edges(cv::Mat& edges);
 };

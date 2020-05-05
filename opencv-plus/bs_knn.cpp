@@ -3,6 +3,7 @@
 bs_knn::bs_knn(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 int bs_knn::exec_bs_knn()

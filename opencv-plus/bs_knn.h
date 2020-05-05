@@ -20,9 +20,9 @@ private:
 	cv::Ptr<cv::BackgroundSubtractor> p_bs = cv::createBackgroundSubtractorKNN();
 
 public:
-	int exec_bs_knn();
 
 public:
+	int exec_bs_knn();
 	bs_knn(const std::string& rpath,  const std::string& wpath);
 	~bs_knn();
 

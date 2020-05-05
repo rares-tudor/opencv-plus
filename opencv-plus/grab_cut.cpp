@@ -7,6 +7,7 @@
 grab_cut::grab_cut(const std::string& rpath, const std::string& wpath)
 {
 	this->rpath = rpath;
+	this->wpath = wpath;
 }
 
 int grab_cut::exec_grc()
