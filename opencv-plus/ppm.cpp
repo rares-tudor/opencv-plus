@@ -2,13 +2,21 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include "ppm.h"
+#include <fstream>
 
 ppm::ppm()
 {
 
 }
 
-std::istream& operator<<(std::istream& inputStream, ppm ppmObj)
+std::ostream& operator<<(std::ostream& outputStream, const ppm ppmObj)
+{
+	size_t size = ppmObj.w * ppmObj.h * 3;
+	outputStream.write(ppmObj.m_Ptr, size);
+	return outputStream;
+}
+
+std::istream& operator>>(std::istream& inputStream, ppm& ppmObj)
 {
 	inputStream >> ppmObj.magnum;
 	inputStream >> ppmObj.w >> ppmObj.h >> ppmObj.maxColVal;
@@ -19,30 +27,23 @@ std::istream& operator<<(std::istream& inputStream, ppm ppmObj)
 	return inputStream;
 }
 
-std::ostream& operator>>(std::ostream& outputStream, const ppm& ppmObj)
+std::istream& operator >>(std::istream& inputStream, cv::Mat3b matImg)
 {
-	outputStream << "P6" << "\n"
-		<< ppmObj.w << " "
-		<< ppmObj.h << "\n"
-		<< ppmObj.maxColVal << "\n";
-	size_t size = ppmObj.w * ppmObj.h * 3;
-	outputStream.write(ppmObj.m_Ptr, size);
-	return outputStream;
+	inputStream >> matImg.cols >> matImg.rows;
+	inputStream.get();
+	size_t size = matImg.cols * matImg.rows * 3;
+	char* ptr{};
+	inputStream.read(ptr, size);
+	return inputStream;
 }
 
-std::ostream& operator >>(std::ostream& outputStream, const cv::Mat3b matImg)
+std::ostream& operator <<(std::ostream& outputStream, const cv::Mat3b matImg)
 {
-	outputStream << "P6" << "\n"
-		<< matImg.cols << " "
-		<< matImg.rows << "\n"
-		<< 255 << "\n";
-	size_t size = matImg.cols * matImg.rows * 3;
+	size_t size = (matImg.cols * matImg.rows * 3);
 	char* ptr{};
 	outputStream.write(ptr, size);
 	return outputStream;
 }
-
-
 
 ppm::~ppm()
 {

@@ -11,6 +11,6 @@ public:
 
 public:
 	sobel_bgd_subtraction(const std::string& rpath, const std::string& wpath);
-	void subtract_bgd();
+	int subtract_bgd();
 };
 

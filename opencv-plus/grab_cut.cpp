@@ -54,12 +54,18 @@ int grab_cut::exec_grc()
 		cv::Mat3b fgdImg = cv::Mat3b::zeros(image.rows, image.cols);
 		// copy all valid foreground-pixels to a temporary image
 		image.copyTo(fgdImg, fgdMask);
-		std::ifstream inFile;
-		std::ofstream outFile;
 		
-		outFile.open(wpath, std::ios::binary);
-		outFile << fgdImg;
-
+		if (sizeof(wpath) != 0)
+		{
+			std::ofstream outFile;
+			outFile.open(wpath, std::ios::binary);
+			outFile << "P3" << "\n"
+				<< fgdImg.cols << " "
+				<< fgdImg.rows << "\n"
+				<< 255 << "\n";
+			outFile << fgdImg;
+			return 0;
+		}
 		cv::imshow("GrabCut Image", fgdImg);
 		cv::waitKey(0);
 	}

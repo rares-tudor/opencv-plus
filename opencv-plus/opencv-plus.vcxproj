@@ -24,6 +24,7 @@
     <ClCompile Include="canny_bgd_subtraction.cpp" />
     <ClCompile Include="canny_edge_detection.cpp" />
     <ClCompile Include="grab_cut.cpp" />
+    <ClCompile Include="opencv-plus.cpp" />
     <ClCompile Include="ppm.cpp" />
     <ClCompile Include="sobel_bgd_subtraction.cpp" />
     <ClCompile Include="sobel_edge_detection.cpp" />

@@ -4,6 +4,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
+#include <fstream>
 
 sobel_bgd_subtraction::sobel_bgd_subtraction(const std::string& rpath, const std::string& wpath)
 {
@@ -11,7 +12,7 @@ sobel_bgd_subtraction::sobel_bgd_subtraction(const std::string& rpath, const std
 	this->wpath = wpath;
 }
 
-void sobel_bgd_subtraction::subtract_bgd()
+int sobel_bgd_subtraction::subtract_bgd()
 {
 	cv::Mat original = cv::imread(rpath, cv::IMREAD_COLOR);
 	sobel_edge_detection sobel_edge(rpath, wpath);
@@ -41,6 +42,18 @@ void sobel_bgd_subtraction::subtract_bgd()
 	cv::dilate(mask, mask, cv::Mat(), cv::Point(-1, -1), 10); // smooth out the mask
 	cv::erode(mask, mask, cv::Mat(), cv::Point(-1, -1), 10);
 	//cv::GaussianBlur(mask, mask, cv::Size(3, 3), 0, 0);
+
+	if (sizeof(wpath) != 0)
+	{
+		std::ofstream outFile;
+		outFile.open(wpath, std::ios::binary);
+		outFile << "P3" << "\n"
+			<< mask.cols << " "
+			<< mask.rows << "\n"
+			<< 255 << "\n";
+		outFile << mask;
+		return 0;
+	}
 
 	cv::Mat result;
 	result.create(original.size(), original.type());
