@@ -1,4 +1,5 @@
 #include "bs_mog2.h"
+#include <fstream>
 
 bs_mog2::bs_mog2(const std::string& rpath, const std::string& wpath)
 {
@@ -28,6 +29,17 @@ int bs_mog2::exec_bs_mog2()
 		cv::imshow("FG Mask", fgMask);
 
 		// Waiting for keyboard response
+		if (sizeof(wpath) != 0)
+		{
+			std::ofstream outFile;
+			outFile.open(wpath, std::ios::binary);
+			outFile << "P3" << "\n"
+				<< fgMask.cols << " "
+				<< fgMask.rows << "\n"
+				<< 255 << "\n";
+			outFile << fgMask;
+			return 0;
+		}
 		int keyboard = cv::waitKey(30);
 		if (keyboard == 'q' || keyboard == 27) break;
 	}

@@ -1,4 +1,5 @@
 #include "bs_knn.h"
+#include <fstream>
 
 bs_knn::bs_knn(const std::string& rpath, const std::string& wpath)
 {
@@ -27,6 +28,18 @@ int bs_knn::exec_bs_knn()
 		cv::imshow("Frame", frame);
 		cv::imshow("FG Mask", fgMask);
 		
+		if (sizeof(wpath) != 0)
+		{
+			std::ofstream outFile;
+			outFile.open(wpath, std::ios::binary);
+			outFile << "P3" << "\n"
+				<< fgMask.cols << " "
+				<< fgMask.rows << "\n"
+				<< 255 << "\n";
+			outFile << fgMask;
+			return 0;
+		}
+
 		// Waiting for keyboard response
 		cv::waitKey(0);
 		/*int keyboard = cv::waitKey(30);

@@ -3,6 +3,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core.hpp>
+#include <fstream>
 #include <vector>
 
 canny_bgd_separator::canny_bgd_separator(const std::string& rpath, const std::string& wpath)
@@ -10,7 +11,7 @@ canny_bgd_separator::canny_bgd_separator(const std::string& rpath, const std::st
 	this->rpath = rpath;
 }
 
-void canny_bgd_separator::subtract_bgd() 
+int canny_bgd_separator::subtract_bgd() 
 {
 	canny_edge_detection edgeDetector(rpath, wpath);
 
@@ -41,6 +42,17 @@ void canny_bgd_separator::subtract_bgd()
 	cv::erode(mask, mask, cv::Mat(), cv::Point(-1, -1), 10);
 	//cv::GaussianBlur(mask, mask, cv::Size(3, 3), 0, 0);
 
+	if (sizeof(wpath) != 0)
+	{
+		std::ofstream outFile;
+		outFile.open(wpath, std::ios::binary);
+		outFile << "P3" << "\n"
+			<< mask.cols << " "
+			<< mask.rows << "\n"
+			<< 255 << "\n";
+		outFile << mask;
+		return 0;
+	}
 	cv::Mat result;
 	result.create(original.size(), original.type());
 	result = cv::Scalar::all(0.0); // set all pixels of result img to 0
@@ -49,6 +61,7 @@ void canny_bgd_separator::subtract_bgd()
 
 	cv::imshow("Detected Edges", result); // display the result
 	cv::waitKey(0);
+
 }
 
 canny_bgd_separator::~canny_bgd_separator() {}
