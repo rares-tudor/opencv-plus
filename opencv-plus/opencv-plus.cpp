@@ -10,6 +10,7 @@
 #include <opencv2/video/background_segm.hpp>
 
 #include <iostream>
+#include <string>
 
 #include "ppm.h"
 #include "grab_cut.h"
