@@ -3,6 +3,7 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <iostream>
+#include <fstream>
 
 
 canny_edge_detection::canny_edge_detection(const std::string& rpath, const std::string& wpath)
@@ -20,8 +21,17 @@ void canny_edge_detection::canny_threshold(int, void*)
 	dst = cv::Scalar::all(0);
 	img.copyTo(dst, edges);
 
-	cv::imshow("Test", dst);
-
+	if (sizeof(wpath) != 0)
+	{
+		std::ofstream outFile;
+		outFile.open(wpath, std::ios::binary);
+		outFile << "P3" << "\n"
+			<< img.cols << " "
+			<< img.rows << "\n"
+			<< 255 << "\n";
+		outFile << img;
+		return;
+	}
 }
 
 void canny_edge_detection::get_edges()
@@ -44,5 +54,4 @@ void canny_edge_detection::get_edges(cv::Mat& edges)
 		cv::namedWindow("Test", cv::WINDOW_AUTOSIZE); // testing purposes
 
 		canny_threshold(0, 0); // apply Canny edge detection with default parameters
-		cv::waitKey(0);
 }
